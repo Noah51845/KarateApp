@@ -1,14 +1,16 @@
-/* Custom styles go here */
-
-/* Adjust the top margin to accommodate the fixed navbar */
-body {
-    padding-top: 56px;
+/* Navbar styles */
+.navbar {
+    background-color: #343a40; /* Background color */
 }
 
-/* Customize the footer style */
-footer {
-    background-color: #343a40;
-    color: white;
-    padding: 10px 0;
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: black !important; /* Text color */
+    font-family: 'Comic Sans MS', cursive; /* Comic Sans font */
+    font-size: 18pt; /* Font size */
 }
 
+    .navbar-brand:hover,
+    .navbar-nav .nav-link:hover {
+        color: #007bff !important; /* Text color on hover */
+    }
