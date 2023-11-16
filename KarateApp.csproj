@@ -116,6 +116,7 @@
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="Global.asax" />
+    <Content Include="mywork\instructor.aspx" />
     <Content Include="mywork\member.aspx" />
     <Content Include="obj\Debug\KarateApp.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\KarateApp.dll" />
@@ -190,6 +191,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Karate.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="mywork\instructor.aspx.cs">
+      <DependentUpon>instructor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mywork\instructor.aspx.designer.cs">
+      <DependentUpon>instructor.aspx</DependentUpon>
     </Compile>
     <Compile Include="mywork\member.aspx.cs">
       <DependentUpon>member.aspx</DependentUpon>
