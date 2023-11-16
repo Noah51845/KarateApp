@@ -116,7 +116,9 @@
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="Global.asax" />
+    <Content Include="mywork\css\css.css" />
     <Content Include="mywork\instructor.aspx" />
+    <Content Include="mywork\javascript\javascript.js" />
     <Content Include="mywork\member.aspx" />
     <Content Include="obj\Debug\KarateApp.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\KarateApp.dll" />
