@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KarateApp", "KarateApp.csproj", "{B092D7FB-C57C-40E2-A6D4-CF13869F0DBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B092D7FB-C57C-40E2-A6D4-CF13869F0DBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B092D7FB-C57C-40E2-A6D4-CF13869F0DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B092D7FB-C57C-40E2-A6D4-CF13869F0DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B092D7FB-C57C-40E2-A6D4-CF13869F0DBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB5DD05F-0EAC-43A9-9224-9C3571711FF3}
+	EndGlobalSection
+EndGlobal
