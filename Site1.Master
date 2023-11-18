@@ -31,9 +31,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <div class="navbar-nav">
-        <a class="btn btn-dark mx-2" href="#">Home</a>
-        <a class="btn btn-dark mx-2" href="mywork/memberinfo/member.aspx">Member</a>
-        <a class="btn btn-dark mx-2" href="mywork/instructorinfo/instructor.aspx">Instructor</a>  
+       <a class="btn btn-dark mx-2" href="<%= ResolveUrl("~/mywork/memberinfo/member.aspx") %>">Member</a>
+<a class="btn btn-dark mx-2" href="<%= ResolveUrl("~/mywork/instructorinfo/instructor.aspx") %>">Instructor</a>
             </div>
         </div>
     </nav>

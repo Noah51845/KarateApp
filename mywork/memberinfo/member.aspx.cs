@@ -12,11 +12,35 @@ namespace KarateApp.mywork
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Check usertype is membe
+            // Ensure the user is logged in
+            if (!User.Identity.IsAuthenticated)
+            {
+                // Redirect to the login page if not authenticated
+                Response.Redirect("~/Logon.aspx");
+                return;
+            }
+
+            // Check user type
+            if (!IsUserTypeAllowed("member"))
+            {
+                // Redirect to an unauthorized page or display an error message
+                Response.Redirect("~/Logon.aspx");
+                return;
+            }
+
+            // Continue with page initialization for members
             if (!IsPostBack)
             {
-                // Assuming you have some way to identify the logged-in member, replace "loggedInMemberId" with the actual member ID.
                 int loggedInMemberId = GetLoggedInMemberId();
+                if (loggedInMemberId == -1)
+                {
+                    // Handle the case where member ID is not found
+                    // Authenticate and redirect back to the login page
+                    FormsAuthentication.SignOut();
+                    Response.Redirect("~/Logon.aspx");
+                    return;
+                }
+
                 string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
                 using (KarateDataContext context = new KarateDataContext(conn))
                 {
@@ -42,9 +66,24 @@ namespace KarateApp.mywork
             {
                 // If the member ID is not found in the session, handle it accordingly.
                 // You might want to redirect the user to the login page or take other actions.
-                // For simplicity, returning -1 as an indication of an error.
+                // For simplicity, redirecting to the login page.
+                FormsAuthentication.SignOut();
+                Response.Redirect("~/Logon.aspx");
                 return -1;
             }
         }
-    }
-}
+
+        private bool IsUserTypeAllowed(string allowedUserType)
+        {
+            // Assuming you store the user type in a session variable named "UserType"
+            if (Session["UserType"] != null && Session["UserType"].ToString() == allowedUserType)
+            {
+                return true;
+            }
+            else
+            {
+                // If the user type is not allowed, return false
+                return false;
+            }
+        }
+    }  }

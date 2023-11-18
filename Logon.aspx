@@ -16,8 +16,6 @@
             <TextBoxStyle Font-Size="0.8em" />
             <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
         </asp:Login>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
     </p>
     <p></p>
     <p></p>
