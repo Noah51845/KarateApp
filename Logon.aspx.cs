@@ -57,12 +57,12 @@ namespace KarateApp
                     // Redirect based on user type
                     if (myUser.UserType.Trim() == "Member")
                     {
-                        FormsAuthentication.RedirectFromLoginPage(nUserName, true);
+                        FormsAuthentication.SetAuthCookie(nUserName, true);
                         Response.Redirect("mywork/memberinfo/member.aspx");
                     }
                     else if (myUser.UserType.Trim() == "Instructor")
                     {
-                        FormsAuthentication.RedirectFromLoginPage(nUserName, true);
+                        FormsAuthentication.SetAuthCookie(nUserName, true);
                         Response.Redirect("mywork/instructorinfo/instructor.aspx");
                     }
                 }
@@ -84,4 +84,3 @@ namespace KarateApp
         }
     }
 }
-    

@@ -22,10 +22,10 @@ namespace KarateApp.mywork
             }
 
             // Check user type
-            if (!IsUserTypeAllowed("instructor"))
+            if (!IsUserTypeAllowed("Instructor"))
             {
                 // Redirect to an unauthorized page or display an error message
-                Response.Redirect("~/Logon.aspx");
+                Response.Redirect("~/UnauthorizedAccess.aspx");
                 return;
             }
 
@@ -79,8 +79,8 @@ namespace KarateApp.mywork
 
         private bool IsUserTypeAllowed(string allowedUserType)
         {
-            // Assuming you store the user type in a session variable named "UserType"
-            if (Session["UserType"] != null && Session["UserType"].ToString() == allowedUserType)
+            // Assuming you store the user type in a session variable named "userType"
+            if (Session["userType"] != null && Session["userType"].ToString() == allowedUserType)
             {
                 return true;
             }

@@ -21,10 +21,10 @@ namespace KarateApp.mywork
             }
 
             // Check user type
-            if (!IsUserTypeAllowed("member"))
+            if (!IsUserTypeAllowed("Member"))
             {
                 // Redirect to an unauthorized page or display an error message
-                Response.Redirect("~/Logon.aspx");
+                Response.Redirect("~/UnauthorizedAccess.aspx");
                 return;
             }
 
@@ -57,10 +57,10 @@ namespace KarateApp.mywork
 
         private int GetLoggedInMemberId()
         {
-            // Assuming you store the member ID in a session variable named "LoggedInMemberId"
-            if (Session["LoggedInMemberId"] != null && Session["LoggedInMemberId"] is int)
+            // Assuming you store the member ID in a session variable named "userID"
+            if (Session["userID"] != null && Session["userID"] is int)
             {
-                return (int)Session["LoggedInMemberId"];
+                return (int)Session["userID"];
             }
             else
             {
@@ -75,8 +75,8 @@ namespace KarateApp.mywork
 
         private bool IsUserTypeAllowed(string allowedUserType)
         {
-            // Assuming you store the user type in a session variable named "UserType"
-            if (Session["UserType"] != null && Session["UserType"].ToString() == allowedUserType)
+            // Assuming you store the user type in a session variable named "userType"
+            if (Session["userType"] != null && Session["userType"].ToString() == allowedUserType)
             {
                 return true;
             }
@@ -86,4 +86,5 @@ namespace KarateApp.mywork
                 return false;
             }
         }
-    }  }
+    }
+}  
