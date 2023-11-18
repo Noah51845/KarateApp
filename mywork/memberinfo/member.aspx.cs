@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,6 +12,7 @@ namespace KarateApp.mywork
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check usertype is membe
             if (!IsPostBack)
             {
                 // Assuming you have some way to identify the logged-in member, replace "loggedInMemberId" with the actual member ID.
@@ -28,6 +30,7 @@ namespace KarateApp.mywork
                 }
             }
         }
+
         private int GetLoggedInMemberId()
         {
             // Assuming you store the member ID in a session variable named "LoggedInMemberId"

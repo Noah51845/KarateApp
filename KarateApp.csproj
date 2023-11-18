@@ -116,10 +116,11 @@
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="Global.asax" />
+    <Content Include="Logon.aspx" />
     <Content Include="mywork\css\css.css" />
-    <Content Include="mywork\instructor.aspx" />
+    <Content Include="mywork\instructorinfo\instructor.aspx" />
     <Content Include="mywork\javascript\javascript.js" />
-    <Content Include="mywork\member.aspx" />
+    <Content Include="mywork\memberinfo\member.aspx" />
     <Content Include="obj\Debug\KarateApp.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\KarateApp.dll" />
     <Content Include="obj\Debug\KarateApp.pdb" />
@@ -194,18 +195,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Karate.dbml</DependentUpon>
     </Compile>
-    <Compile Include="mywork\instructor.aspx.cs">
+    <Compile Include="Logon.aspx.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logon.aspx.designer.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mywork\instructorinfo\instructor.aspx.cs">
       <DependentUpon>instructor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="mywork\instructor.aspx.designer.cs">
+    <Compile Include="mywork\instructorinfo\instructor.aspx.designer.cs">
       <DependentUpon>instructor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="mywork\member.aspx.cs">
+    <Compile Include="mywork\memberinfo\member.aspx.cs">
       <DependentUpon>member.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="mywork\member.aspx.designer.cs">
+    <Compile Include="mywork\memberinfo\member.aspx.designer.cs">
       <DependentUpon>member.aspx</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
