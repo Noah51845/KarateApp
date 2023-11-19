@@ -52,8 +52,9 @@ namespace KarateApp.mywork
                     {
                         // Display instructor information on the page as needed
                         // For example:
-                        Label1.Text = instructor.InstructorFirstName;
-                        Label2.Text = instructor.InstructorLastName;
+                        Label1.Text = "Welcome, " + instructor.InstructorFirstName;
+                        Label2.Text = "Last Name: " + instructor.InstructorLastName;
+                        // Add any additional labels or information you want to display for the instructor
                     }
                 }
             }
@@ -91,4 +92,4 @@ namespace KarateApp.mywork
             }
         }
     }
-}
+}   

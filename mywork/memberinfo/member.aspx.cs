@@ -48,8 +48,8 @@ namespace KarateApp.mywork
 
                     if (member != null)
                     {
-                        Label1.Text = member.MemberFirstName;
-                        Label2.Text = member.MemberLastName;
+                        Label1.Text = "Welcome, " + member.MemberFirstName;
+                        Label2.Text =  member.MemberLastName;
                     }
                 }
             }

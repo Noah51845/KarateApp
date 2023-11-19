@@ -50,26 +50,25 @@ namespace KarateApp
 
                 if (myUser != null)
                 {
-                    // Add UserID and User type to the Session
+                    // Add UserID, User type, and User Name to the Session
                     HttpContext.Current.Session["userID"] = myUser.UserID;
                     HttpContext.Current.Session["userType"] = myUser.UserType;
+                    HttpContext.Current.Session["userName"] = myUser.UserName;
 
                     // Redirect based on user type
                     if (myUser.UserType.Trim() == "Member")
                     {
-                        FormsAuthentication.SetAuthCookie(nUserName, true);
+                        FormsAuthentication.RedirectFromLoginPage(nUserName, true);
                         Response.Redirect("mywork/memberinfo/member.aspx");
                     }
                     else if (myUser.UserType.Trim() == "Instructor")
                     {
-                        FormsAuthentication.SetAuthCookie(nUserName, true);
+                        FormsAuthentication.RedirectFromLoginPage(nUserName, true);
                         Response.Redirect("mywork/instructorinfo/instructor.aspx");
                     }
                 }
                 else
                 {
-                    // Add this debug line
-                    System.Diagnostics.Debug.WriteLine($"User not found: {nUserName}");
                     // If user authentication fails or user type is not recognized, redirect to Logon page
                     Response.Redirect("~/Logon.aspx", true);
                 }
@@ -83,4 +82,4 @@ namespace KarateApp
             }
         }
     }
-}
+    }
