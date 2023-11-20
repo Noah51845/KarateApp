@@ -33,6 +33,24 @@ namespace KarateApp.mywork
         protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
+        /// btnMemDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMemDelete;
+
+        /// <summary>
+        /// btnInsDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnInsDelete;
+
+        /// <summary>
         /// txtMemFname control.
         /// </summary>
         /// <remarks>
@@ -87,6 +105,15 @@ namespace KarateApp.mywork
         protected global::System.Web.UI.WebControls.TextBox txtMemPassword;
 
         /// <summary>
+        /// btnMemAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMemAdd;
+
+        /// <summary>
         /// txtInsFname control.
         /// </summary>
         /// <remarks>
@@ -105,6 +132,15 @@ namespace KarateApp.mywork
         protected global::System.Web.UI.WebControls.TextBox txtInsLname;
 
         /// <summary>
+        /// txtInsPhoneNum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInsPhoneNum;
+
+        /// <summary>
         /// txtInsUsername control.
         /// </summary>
         /// <remarks>
@@ -121,5 +157,50 @@ namespace KarateApp.mywork
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtInsPassword;
+
+        /// <summary>
+        /// btnInsAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnInsAdd;
+
+        /// <summary>
+        /// DropDownSessionType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownSessionType;
+
+        /// <summary>
+        /// txtSessionStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSessionStartDate;
+
+        /// <summary>
+        /// txtSessionFee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSessionFee;
+
+        /// <summary>
+        /// btnAddSession control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddSession;
     }
 }

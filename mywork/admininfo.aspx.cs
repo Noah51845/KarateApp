@@ -32,5 +32,142 @@ namespace KarateApp.mywork
             dbcon = new KarateDataContext(conn);
             ShowAllRecords();
         }
+
+        protected void btnMemAdd_Click(object sender, EventArgs e)
+        {
+            using (KarateDataContext context = new KarateDataContext(conn))
+            {
+                var newUser = new NetUser
+                {
+                    UserName = txtMemUsername.Text,
+                    UserPassword = txtMemPassword.Text,
+                    UserType = "Member"
+                };
+                context.NetUsers.InsertOnSubmit(newUser);
+                context.SubmitChanges();
+                var newMemberRecord = new Member
+                {
+                    Member_UserID = newUser.UserID,
+                    MemberFirstName = txtMemFname.Text,
+                    MemberLastName = txtMemLname.Text,
+                    MemberEmail = txtMemEmail.Text,
+                    MemberPhoneNumber = txtMemPhoneNum.Text,
+                    MemberDateJoined = DateTime.Now,
+                };
+                context.Members.InsertOnSubmit(newMemberRecord);
+                context.SubmitChanges();
+                ShowAllRecords();
+            }
+        }
+
+        protected void btnInsAdd_Click(object sender, EventArgs e)
+        {
+            using (KarateDataContext context = new KarateDataContext(conn))
+            {
+                var newUser = new NetUser
+                {
+                    UserName = txtInsUsername.Text,
+                    UserPassword = txtInsPassword.Text,
+                    UserType = "Instructor"
+                };
+                context.NetUsers.InsertOnSubmit(newUser);
+                context.SubmitChanges();
+                var newInstructorRecord = new Instructor
+                {
+                    InstructorID = newUser.UserID,
+                    InstructorFirstName = txtInsFname.Text,
+                    InstructorLastName = txtInsLname.Text,
+                    InstructorPhoneNumber = txtInsPhoneNum.Text,
+
+                };
+                context.Instructors.InsertOnSubmit(newInstructorRecord);
+                context.SubmitChanges();
+                ShowAllRecords();
+            }
+        }
+
+
+        protected void btnMemDelete_Click(object sender, EventArgs e)
+        {
+            if (GridView1.SelectedIndex >= 0)
+            {
+                int index = GridView1.SelectedIndex;
+
+                using (KarateDataContext context = new KarateDataContext(conn))
+                {
+                    var deleteMemberRecord = context.Members.Skip(index).FirstOrDefault();
+                    var deleteUserRecord = context.NetUsers.FirstOrDefault(item => item.UserID == deleteMemberRecord.Member_UserID);
+                    var deleteSessionRecord = context.Sections.FirstOrDefault(item => item.Member_ID == deleteMemberRecord.Member_UserID);
+                    
+                    
+                    if(deleteSessionRecord != null)
+                    {
+                        context.Sections.DeleteOnSubmit(deleteSessionRecord);
+                        context.SubmitChanges();
+                    }
+                    context.Members.DeleteOnSubmit(deleteMemberRecord);
+                    context.SubmitChanges();
+                    context.NetUsers.DeleteOnSubmit(deleteUserRecord);
+                    context.SubmitChanges();
+
+                    ShowAllRecords();
+                }
+            }
+        }
+
+        protected void btnInsDelete_Click(object sender, EventArgs e)
+        {
+            if (GridView2.SelectedIndex >= 0)
+            {
+                int index = GridView2.SelectedIndex;
+
+                using (KarateDataContext context = new KarateDataContext(conn))
+                {
+                    var deleteInstructorRecord = context.Instructors.Skip(index).FirstOrDefault();
+                    var deleteUserRecord = context.NetUsers.FirstOrDefault(item => item.UserID == deleteInstructorRecord.InstructorID);
+                    var deleteSessionRecord = context.Sections.FirstOrDefault(item => item.Instructor_ID == deleteInstructorRecord.InstructorID);
+
+                    
+                    if (deleteSessionRecord != null)
+                    {
+                        context.Sections.DeleteOnSubmit(deleteSessionRecord);
+                        context.SubmitChanges();
+                    }
+                    context.Instructors.DeleteOnSubmit(deleteInstructorRecord);
+                    context.SubmitChanges();
+                    context.NetUsers.DeleteOnSubmit(deleteUserRecord);
+                    context.SubmitChanges();
+
+                    ShowAllRecords();
+                }
+            }
+        }
+
+        protected void btnAddSession_Click(object sender, EventArgs e)
+        {
+            if (GridView1.SelectedIndex >= 0 && GridView2.SelectedIndex >= 0)
+            {
+                int index = GridView1.SelectedIndex;
+
+                using (KarateDataContext context = new KarateDataContext(conn))
+                {
+                    var memberRecord = context.Members.Skip(index).FirstOrDefault();
+
+                    index = GridView2.SelectedIndex;
+                    var instructorRecord = context.Instructors.Skip(index).FirstOrDefault();
+
+                    var section = new Section
+                    {
+                        Member_ID = memberRecord.Member_UserID,
+                        Instructor_ID = instructorRecord.InstructorID,
+                        SectionFee = Convert.ToDecimal(txtSessionFee.Text),
+                        SectionStartDate = Convert.ToDateTime(txtSessionStartDate.Text),
+                        SectionName = DropDownSessionType.SelectedItem.ToString(),
+                    };
+                    context.Sections.InsertOnSubmit(section);
+                    context.SubmitChanges();
+                }
+            }
+        }
     }
 }
