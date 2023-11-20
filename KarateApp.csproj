@@ -117,6 +117,7 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="Global.asax" />
     <Content Include="Logon.aspx" />
+    <Content Include="mywork\admininfo.aspx" />
     <Content Include="mywork\css\css.css" />
     <Content Include="mywork\instructorinfo\instructor.aspx" />
     <Content Include="mywork\javascript\javascript.js" />
@@ -201,6 +202,13 @@
     </Compile>
     <Compile Include="Logon.aspx.designer.cs">
       <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mywork\admininfo.aspx.cs">
+      <DependentUpon>admininfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mywork\admininfo.aspx.designer.cs">
+      <DependentUpon>admininfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="mywork\instructorinfo\instructor.aspx.cs">
       <DependentUpon>instructor.aspx</DependentUpon>
