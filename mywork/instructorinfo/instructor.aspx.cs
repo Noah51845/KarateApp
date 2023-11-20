@@ -42,7 +42,8 @@ namespace KarateApp.mywork
                     return;
                 }
 
-                string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+                //string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+                string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30";
 
                 using (KarateDataContext context = new KarateDataContext(conn))
                 {
@@ -52,8 +53,9 @@ namespace KarateApp.mywork
                     {
                         // Display instructor information on the page as needed
                         // For example:
-                        Label1.Text = instructor.InstructorFirstName;
-                        Label2.Text = instructor.InstructorLastName;
+                        Label1.Text = "Welcome, " + instructor.InstructorFirstName;
+                        Label2.Text = "Last Name: " + instructor.InstructorLastName;
+                        // Add any additional labels or information you want to display for the instructor
                     }
                 }
             }
@@ -91,4 +93,4 @@ namespace KarateApp.mywork
             }
         }
     }
-}
+}   

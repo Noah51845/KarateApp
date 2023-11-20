@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace KarateApp.mywork
 {
@@ -41,15 +43,17 @@ namespace KarateApp.mywork
                     return;
                 }
 
-                string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+                //string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+                string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30"; 
+                
                 using (KarateDataContext context = new KarateDataContext(conn))
                 {
                     var member = context.Members.SingleOrDefault(m => m.Member_UserID == loggedInMemberId);
 
                     if (member != null)
                     {
-                        Label1.Text = member.MemberFirstName;
-                        Label2.Text = member.MemberLastName;
+                        Label1.Text = "Welcome, " + member.MemberFirstName;
+                        Label2.Text =  member.MemberLastName;
                     }
                 }
             }

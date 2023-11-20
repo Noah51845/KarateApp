@@ -12,7 +12,8 @@ namespace KarateApp
     public partial class Logon : System.Web.UI.Page
     {
         KarateDataContext dbcon;
-        string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+        //string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+        string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,26 +51,25 @@ namespace KarateApp
 
                 if (myUser != null)
                 {
-                    // Add UserID and User type to the Session
+                    // Add UserID, User type, and User Name to the Session
                     HttpContext.Current.Session["userID"] = myUser.UserID;
                     HttpContext.Current.Session["userType"] = myUser.UserType;
+                    HttpContext.Current.Session["userName"] = myUser.UserName;
 
                     // Redirect based on user type
                     if (myUser.UserType.Trim() == "Member")
                     {
-                        FormsAuthentication.SetAuthCookie(nUserName, true);
+                        FormsAuthentication.RedirectFromLoginPage(nUserName, true);
                         Response.Redirect("mywork/memberinfo/member.aspx");
                     }
                     else if (myUser.UserType.Trim() == "Instructor")
                     {
-                        FormsAuthentication.SetAuthCookie(nUserName, true);
+                        FormsAuthentication.RedirectFromLoginPage(nUserName, true);
                         Response.Redirect("mywork/instructorinfo/instructor.aspx");
                     }
                 }
                 else
                 {
-                    // Add this debug line
-                    System.Diagnostics.Debug.WriteLine($"User not found: {nUserName}");
                     // If user authentication fails or user type is not recognized, redirect to Logon page
                     Response.Redirect("~/Logon.aspx", true);
                 }
@@ -83,4 +83,4 @@ namespace KarateApp
             }
         }
     }
-}
+    }
