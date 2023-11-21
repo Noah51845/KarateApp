@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Security;
@@ -43,22 +44,46 @@ namespace KarateApp.mywork
                     return;
                 }
 
-                //string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
-                string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30"; 
-                
+                string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+                //string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30"; 
+
                 using (KarateDataContext context = new KarateDataContext(conn))
                 {
-                    var member = context.Members.SingleOrDefault(m => m.Member_UserID == loggedInMemberId);
+                    var query = from Member in context.Members
+                                join Section in context.Sections on Member.Member_UserID equals Section.Member_ID
+                                join Instructor in context.Instructors on Section.Instructor_ID equals Instructor.InstructorID
+                                where Member.Member_UserID == loggedInMemberId
+                                select new
+                                {
+                                    Member.MemberFirstName,
+                                    Member.MemberLastName,
+                                    Member.MemberDateJoined,
+                                    Section.SectionName,
+                                    Instructor.InstructorFirstName,
+                                    Instructor.InstructorLastName,
+                                    Section.SectionFee,
+                                };
 
-                    if (member != null)
+                    var memberWithSections = query.ToList();
+
+                    if (memberWithSections.Any())
                     {
-                        Label1.Text = "Welcome, " + member.MemberFirstName;
-                        Label2.Text =  member.MemberLastName;
-                    }
-                }
-            }
-        }
+                        Label1.Text = "Welcome, " + memberWithSections.First().MemberFirstName;
+                        Label2.Text = memberWithSections.First().MemberLastName;
 
+                        // Calculate total amount spent on sections
+                        decimal totalAmount = memberWithSections.Sum(section => section.SectionFee);
+
+                        // Display the total amount
+                        Label3.Text = "Total Amount Spent on Sections: $" + totalAmount;
+
+                        // Bind member information to GridView
+                        GridView1.DataSource = memberWithSections;
+                        GridView1.DataBind();
+
+                    }
+                }    }
+        }
         private int GetLoggedInMemberId()
         {
             // Assuming you store the member ID in a session variable named "userID"

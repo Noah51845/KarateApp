@@ -42,8 +42,8 @@ namespace KarateApp.mywork
                     return;
                 }
 
-                //string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
-                string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30";
+                string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+                //string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30";
 
                 using (KarateDataContext context = new KarateDataContext(conn))
                 {
@@ -51,16 +51,34 @@ namespace KarateApp.mywork
 
                     if (instructor != null)
                     {
-                        // Display instructor information on the page as needed
-                        // For example:
-                        Label1.Text = "Welcome, " + instructor.InstructorFirstName;
-                        Label2.Text = "Last Name: " + instructor.InstructorLastName;
-                        // Add any additional labels or information you want to display for the instructor
+                        var instructorInfo = (from Instructor in context.Instructors
+                                              join Section in context.Sections on Instructor.InstructorID equals Section.Instructor_ID
+                                              join Member in context.Members on Section.Member_ID equals Member.Member_UserID
+                                              where instructor.InstructorID == loggedInInstructorId
+                                              select new
+                                              {
+                                                  Instructor.InstructorFirstName,
+                                                  Instructor.InstructorLastName,
+                                                  Section.SectionName,
+                                                  Member.MemberFirstName,
+                                                  Member.MemberLastName,
+                                                  // Add other properties you need
+                                              }).FirstOrDefault();
+
+                        if (instructorInfo != null)
+                        {
+                            // Display instructor information on the page
+                            Label1.Text = "Welcome, " + instructorInfo.InstructorFirstName;
+                            Label2.Text = instructorInfo.InstructorLastName;
+
+                            // Bind instructor information to GridView
+                            GridView1.DataSource = new List<object> { instructorInfo }; // Creating a list with a single item for simplicity
+                            GridView1.DataBind();
+                        }
                     }
                 }
             }
         }
-
         private int GetLoggedInInstructorId()
         {
             // Assuming you store the instructor ID in a session variable named "userID"

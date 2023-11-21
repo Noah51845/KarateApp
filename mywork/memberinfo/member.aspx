@@ -18,14 +18,9 @@
     <table style="width: 100%;">
         <tr>
             <td class="auto-style2">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">
-                    <Columns>
-                        <asp:BoundField DataField="MemberFirstName" HeaderText="MemberFirstName" SortExpression="MemberFirstName" />
-                        <asp:BoundField DataField="MemberLastName" HeaderText="MemberLastName" SortExpression="MemberLastName" />
-                        <asp:BoundField DataField="SectionName" HeaderText="SectionName" SortExpression="SectionName" />
-                    </Columns>
+                <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                <asp:GridView ID="GridView1" runat="server">
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:KarateSchoolConnectionString %>" SelectCommand="SELECT Member.MemberFirstName, Member.MemberLastName, Section.SectionName FROM Member INNER JOIN Section ON Member.Member_UserID = Section.Member_ID"></asp:SqlDataSource>
             </td>
             <td class="auto-style1">Hello,
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>

@@ -28,14 +28,8 @@
     <table style="width:100%;">
         <tr>
             <td class="auto-style3">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
-                    <Columns>
-                        <asp:BoundField DataField="InstructorFirstName" HeaderText="InstructorFirstName" SortExpression="InstructorFirstName" />
-                        <asp:BoundField DataField="InstructorLastName" HeaderText="InstructorLastName" SortExpression="InstructorLastName" />
-                        <asp:BoundField DataField="SectionName" HeaderText="SectionName" SortExpression="SectionName" />
-                    </Columns>
+                <asp:GridView ID="GridView1" runat="server">
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:KarateSchoolConnectionString %>" SelectCommand="SELECT Instructor.InstructorFirstName, Instructor.InstructorLastName, Section.SectionName FROM Instructor CROSS JOIN Section"></asp:SqlDataSource>
             </td>
             <td class="auto-style2">
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
