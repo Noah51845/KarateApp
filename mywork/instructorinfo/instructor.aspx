@@ -9,14 +9,14 @@
     }
     .auto-style3 {
         height: 421px;
-        width: 1135px;
+        width: 546px;
     }
     .auto-style4 {
-        width: 1135px;
+        width: 546px;
     }
     .auto-style5 {
         height: 386px;
-        width: 1135px;
+        width: 546px;
     }
 </style>
 </asp:Content>
