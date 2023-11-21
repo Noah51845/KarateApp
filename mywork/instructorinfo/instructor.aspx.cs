@@ -25,7 +25,7 @@ namespace KarateApp.mywork
             if (!IsUserTypeAllowed("Instructor"))
             {
                 // Redirect to an unauthorized page or display an error message
-                Response.Redirect("~/UnauthorizedAccess.aspx");
+                Response.Redirect("~/Logon.aspx");
                 return;
             }
 
@@ -42,8 +42,8 @@ namespace KarateApp.mywork
                     return;
                 }
 
-                //string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
-                string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30";
+                string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+                //string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30";
 
                 using (KarateDataContext context = new KarateDataContext(conn))
                 {
@@ -82,9 +82,10 @@ namespace KarateApp.mywork
         private bool IsUserTypeAllowed(string allowedUserType)
         {
             // Assuming you store the user type in a session variable named "userType"
-            if (Session["userType"] != null && Session["userType"].ToString() == allowedUserType)
+            if (Session["userType"] != null)
             {
-                return true;
+                string userType = Session["userType"].ToString().Trim();
+                return userType == allowedUserType || userType == "Administrator";
             }
             else
             {
@@ -93,4 +94,4 @@ namespace KarateApp.mywork
             }
         }
     }
-}   
+}

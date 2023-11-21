@@ -12,8 +12,8 @@ namespace KarateApp
     public partial class Logon : System.Web.UI.Page
     {
         KarateDataContext dbcon;
-        //string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
-        string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30";
+        string conn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\Desktop\\Assignment4\\KarateApp\\App_Data\\KarateSchool.mdf;Integrated Security=True;Connect Timeout=30";
+        //string conn = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\matht\\OneDrive\\Documents\\GitHub\\KarateApp\\App_Data\\KarateSchool.mdf; Integrated Security = True; Connect Timeout = 30";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,6 +32,10 @@ namespace KarateApp
                     else if (HttpContext.Current.Session["userType"].ToString().Trim() == "Instructor")
                     {
                         Response.Redirect("mywork/instructorinfo/instructor.aspx");
+                    }
+                    else if (HttpContext.Current.Session["userType"].ToString().Trim() == "Administrator")
+                    {
+                        Response.Redirect("mywork/admininfo.aspx");
                     }
                 }
             }
